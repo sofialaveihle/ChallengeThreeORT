@@ -5,19 +5,29 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.VerticalAlignmentLine
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import ar.edu.ort.challengethreeort.components.QuoteCard
-import ar.edu.ort.challengethreeort.core.Config
 import ar.edu.ort.challengethreeort.ui.theme.ChallengeThreeORTTheme
+import ar.edu.ort.challengethreeort.ui.theme.Peach
+import ar.edu.ort.challengethreeort.ui.theme.colorGradient
 import ar.edu.ort.challengethreeort.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -33,15 +43,41 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ChallengeThreeORTTheme {
-                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
-                    QuoteCard(
-                        quote = viewModel.Quote.value,
-                        author = viewModel.Author.value,
-                        category = viewModel.Category.value,
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                    Button(onClick = { viewModel.loadQuotes() }) {
-                        Text("Actualizar texto")
+                Box(
+                    modifier = Modifier.background(Brush.horizontalGradient(colorStops = colorGradient))
+                ) {
+                    Scaffold(
+                        modifier = Modifier.fillMaxSize(),
+                        containerColor = Color.Transparent
+                    ) { innerPadding ->
+
+                        Column(
+                            modifier = Modifier
+                                .padding(vertical = 150.dp, horizontal = 20.dp),
+                            verticalArrangement = Arrangement.spacedBy(10.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            QuoteCard(
+                                quote = viewModel.Quote.value,
+                                author = viewModel.Author.value,
+                                category = viewModel.Category.value,
+                                modifier = Modifier.padding(innerPadding)
+                            )
+                            IconButton(
+                                onClick = { viewModel.loadQuotes() }
+                            ) {
+                                Image(
+                                    painter = painterResource(R.drawable.arrow_circle),
+                                    contentDescription = "Circle arrow",
+                                    modifier = Modifier
+                                        .size(40.dp)
+                                        .background(
+                                            color = Peach
+                                        )
+                                )
+
+                            }
+                        }
                     }
                 }
             }
