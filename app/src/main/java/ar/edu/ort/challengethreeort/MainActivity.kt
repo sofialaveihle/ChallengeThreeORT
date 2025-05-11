@@ -12,12 +12,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import ar.edu.ort.challengethreeort.components.QuoteCard
-import ar.edu.ort.challengethreeort.core.Config
 import ar.edu.ort.challengethreeort.ui.theme.ChallengeThreeORTTheme
 import ar.edu.ort.challengethreeort.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
