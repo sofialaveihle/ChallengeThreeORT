@@ -34,7 +34,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
@@ -64,13 +64,14 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     //Retrofit
-    /*implementation(libs.retrofit)
+    implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
-    */
 
     //Lifecycle
+    implementation(libs.lifecycle.viewmodel)
+    //implementation(libs.lifecycle.common)
 
     // Hilt
     implementation(libs.hilt.android)
