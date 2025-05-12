@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val LightColors = lightColorScheme(
-    background = Color(0xFFF5F5F5),          // Fondo general claro
+    background = Color(0xFFFFFFFF),          // Fondo general claro
     primary = Color(0xFF000000),            // Texto de la Quote
     onSurface = Color(0xFF424141),          // Texto del autor
     onSecondary = Color(0xFF636262),        // Texto de la categoría
